@@ -1,0 +1,41 @@
+
+struct NODE
+{
+	int Num ;
+	NODE *pNext;
+};
+
+
+NODE* SortList(NODE* List1, NODE* List2)
+{
+	NODE *pCur = new NODE;
+	NODE *pAns = pCur;
+	if (NULL == List1)
+	{
+		return List2;
+	}
+	if (NULL == List2)
+	{
+		return List1;
+	}
+
+
+	while (NULL != List1 && NULL != List2)
+	{
+		if (List1->Num >= List2->Num)
+		{
+			pCur->pNext = List2;
+			List2 = List2->pNext;
+		}
+		else
+		{
+			pCur->pNext = List1;
+			List1 = List1->pNext;
+		}
+
+		pCur = pCur->pNext;
+
+	}
+	pCur->pNext = List1 ? List1 : List2;
+	return pAns->pNext;
+}
